@@ -5,7 +5,7 @@ root = Tk()
 herp = StringVar()
 
 
-def mhello():
+def mHello():
     xtext = herp.get() #Gets the text user typed in box
     xlabel = Label(root, text=xtext) #Makes a label using the text
     xlabel.grid(row=0, column=4) #Place label
@@ -18,12 +18,13 @@ def mNew():
     mlabel3.place(x=200, y=200)
     return
 
-#Window
+
+#Title at the top
 root.title("Simple GUI")
-#Size
+#Window size
 root.geometry("640x480")
 
-mlabel = Label(text='blah', fg='red', bg='blue')
+mlabel = Label(text='blah', fg='#3aec61', bg='#07c7dd')
 #mlabel.pack() #Places label at the top middle
 #mlabel.place(x=150, y=150) #Places label at custom co-ords
 
@@ -36,7 +37,7 @@ mlabel2.grid(row=1, column=0)
 mlabel3 = Label(text='potatoes', fg='purple',bg='cyan')
 mlabel3.grid(row=0, column=1)
 
-mbutton = Button(text='OK', command = mhello)
+mbutton = Button(text='OK', command = mHello)
 #mbutton.place(x=300, y=300)
 mbutton.grid(row=0, column=2)
 
