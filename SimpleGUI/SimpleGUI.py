@@ -4,7 +4,6 @@ from tkinter import *
 root = Tk()
 herp = StringVar()
 
-
 def mHello():
     xtext = herp.get() #Gets the text user typed in box
     xlabel = Label(root, text=xtext) #Makes a label using the text
@@ -18,15 +17,27 @@ def mNew():
     mlabel3.place(x=200, y=200)
     return
 
+def mQuit():
+    sys.exit()
+    return
+
 
 #Title at the top
 root.title("Simple GUI")
-#Window size
-root.geometry("640x480")
 
-mlabel = Label(text='blah', fg='#3aec61', bg='#07c7dd')
+#Window size
+root.geometry("720x480")
+
+#Creating a label
+#text = what you want it to display
+#fg = foreground colour (hex)
+#bg = background colour (hex)
+#font = (Font type, size)
+mlabel = Label(text='blah, this is text', fg='#3aec61', bg='#07c7dd', font=("Calibri", 18))
+
 #mlabel.pack() #Places label at the top middle
 #mlabel.place(x=150, y=150) #Places label at custom co-ords
+
 
 #.grid() Think excel spreadsheets
 mlabel.grid(row=0, column=0, sticky=W) #Align left
@@ -54,7 +65,7 @@ filemenu = Menu(menubar, tearoff = 0)
 filemenu.add_command(label = 'New', command = mNew)
 filemenu.add_command(label = 'Open')
 filemenu.add_command(label = 'Save As...')
-filemenu.add_command(label = 'Close')
+filemenu.add_command(label = 'Close', command = mQuit)
 menubar.add_cascade(label = 'File', menu = filemenu)
 
 #Help menu
