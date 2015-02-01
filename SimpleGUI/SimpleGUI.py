@@ -1,11 +1,12 @@
 import sys
 from tkinter import *
+from tkinter import messagebox
 
 root = Tk()
-herp = StringVar()
+userInput = StringVar() #String variable that stores whatever the user types in the entry box
 
 def mHello():
-    xtext = herp.get() #Gets the text user typed in box
+    xtext = userInput.get() #Gets the text user typed in box
     xlabel = Label(root, text=xtext) #Makes a label using the text
     xlabel.grid(row=0, column=4) #Place label
     return
@@ -13,14 +14,21 @@ def mHello():
     #xlabel.grid(row=0, column=4)
 
 def mNew():
-    mlabel3 = Label(root, text='You clicked New')
-    mlabel3.place(x=200, y=200)
+    #mlabel3 = Label(root, text='You clicked New')
+    #mlabel3.place(x=200, y=200)
+    newWin = Toplevel()
+    newWin.title("A new window")
+    newWin.geometry("400x400")
     return
 
-def mQuit():
-    sys.exit()
+def mClose():
+    exitBox = messagebox.askyesno(title="Exit", message="Do you want to quit?")
+    if exitBox is True:
+        root.quit()
     return
 
+def mAbout():
+    messagebox.showinfo(title="About", message="Just messing around with tkinter!")
 
 """Title at the top"""
 root.title("Simple GUI")
@@ -60,7 +68,7 @@ mbutton.grid(row=0, column=2)
 
 
 """Entry Box"""
-mEntry = Entry(root, textvariable=herp)
+mEntry = Entry(root, textvariable=userInput)
 mEntry.grid(row=0, column=3)
 #mEntry.place(x=400, y=450)
 
@@ -73,13 +81,14 @@ filemenu = Menu(menubar, tearoff = 0)
 filemenu.add_command(label = 'New', command = mNew)
 filemenu.add_command(label = 'Open')
 filemenu.add_command(label = 'Save As...')
-filemenu.add_command(label = 'Close', command = mQuit)
+filemenu.add_command(label = 'Close', command = mClose)
 menubar.add_cascade(label = 'File', menu = filemenu)
+#filemenu.bind_all("<Control-n>", mNew()) #Doesn't work
 
 #Help menu
 helpmenu = Menu(menubar, tearoff = 0)
 helpmenu.add_command(label = 'Help Docs')
-helpmenu.add_command(label = 'About')
+helpmenu.add_command(label = 'About', command = mAbout)
 menubar.add_cascade(label = 'Help', menu = helpmenu)
 
 
